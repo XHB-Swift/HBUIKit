@@ -35,6 +35,7 @@
 		C63BABCC22D5C7100066B6EA /* UIColor+HBColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HBColor.m"; sourceTree = "<group>"; };
 		C63BABCE22D5D4A00066B6EA /* UIImage+HBImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+HBImage.h"; sourceTree = "<group>"; };
 		C63BABCF22D5D4A00066B6EA /* UIImage+HBImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+HBImage.m"; sourceTree = "<group>"; };
+		C63BABD122D7100F0066B6EA /* HBUIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HBUIKit.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +85,7 @@
 		C63BABC722D5C4B20066B6EA /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				C63BABD122D7100F0066B6EA /* HBUIKit.h */,
 				C63BABC822D5C4DE0066B6EA /* UIView+HBFrame.h */,
 				C63BABC922D5C4DE0066B6EA /* UIView+HBFrame.m */,
 				C63BABCB22D5C7100066B6EA /* UIColor+HBColor.h */,

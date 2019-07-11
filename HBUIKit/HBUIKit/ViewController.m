@@ -7,9 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "UIColor+HBColor.h"
-#import "UIView+HBFrame.h"
-#import "UIImage+HBImage.h"
+#import "HBUIKit.h"
 
 @interface ViewController ()
 
