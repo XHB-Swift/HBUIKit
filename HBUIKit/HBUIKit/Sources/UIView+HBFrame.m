@@ -10,20 +10,12 @@
 
 @implementation UIView (HBFrame)
 
-#pragma mark - 私有方法
-
-- (void)didChangeFrame:(void(^)(CGRect frame))block {
-    CGRect frame = self.frame;
-    block(frame);
-    self.frame = frame;
-}
-
 #pragma mark - 修改frame
 
 - (void)setHb_x:(CGFloat)hb_x {
-    [self didChangeFrame:^(CGRect frame) {
-        frame.origin.x = hb_x;
-    }];
+    CGRect frame = self.frame;
+    frame.origin.x = hb_x;
+    self.frame = frame;
 }
 
 - (CGFloat)hb_x {
@@ -31,9 +23,9 @@
 }
 
 - (void)setHb_y:(CGFloat)hb_y {
-    [self didChangeFrame:^(CGRect frame) {
-        frame.origin.y = hb_y;
-    }];
+    CGRect frame = self.frame;
+    frame.origin.y = hb_y;
+    self.frame = frame;
 }
 
 - (CGFloat)hb_y {
@@ -41,9 +33,9 @@
 }
 
 - (void)setHb_width:(CGFloat)hb_width {
-    [self didChangeFrame:^(CGRect frame) {
-        frame.size.width = hb_width;
-    }];
+    CGRect frame = self.frame;
+    frame.size.width = hb_width;
+    self.frame = frame;
 }
 
 - (CGFloat)hb_width {
@@ -51,9 +43,9 @@
 }
 
 - (void)setHb_height:(CGFloat)hb_height {
-    [self didChangeFrame:^(CGRect frame) {
-        frame.size.height = hb_height;
-    }];
+    CGRect frame = self.frame;
+    frame.size.height = hb_height;
+    self.frame = frame;
 }
 
 - (CGFloat)hb_height {
@@ -61,9 +53,9 @@
 }
 
 - (void)setHb_origin:(CGPoint)hb_origin {
-    [self didChangeFrame:^(CGRect frame) {
-        frame.origin = hb_origin;
-    }];
+    CGRect frame = self.frame;
+    frame.origin = hb_origin;
+    self.frame = frame;
 }
 
 - (CGPoint)hb_origin {
@@ -71,9 +63,9 @@
 }
 
 - (void)setHb_size:(CGSize)hb_size {
-    [self didChangeFrame:^(CGRect frame) {
-        frame.size = hb_size;
-    }];
+    CGRect frame = self.frame;
+    frame.size = hb_size;
+    self.frame = frame;
 }
 
 - (CGSize)hb_size {

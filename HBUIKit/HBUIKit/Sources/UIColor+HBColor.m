@@ -40,9 +40,12 @@
             hex = [hexString substringFromIndex:1];
             hex = [hexPrefix stringByAppendingString:hex];
         }
-        long hexInt = 0;
-        sscanf(hex.UTF8String, "%lx", &hexInt);
-        color = [UIColor HBColorWithHexInt:hexInt alpha:alpha];
+        NSPredicate *hexStringPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",@"^0x[A-Fa-f0-9]*"];
+        if ([hexStringPredicate evaluateWithObject:hex]) {
+            long hexInt = 0;
+            sscanf(hex.UTF8String, "%lx", &hexInt);
+            color = [UIColor HBColorWithHexInt:hexInt alpha:alpha];
+        }
     }
     
     return color;
