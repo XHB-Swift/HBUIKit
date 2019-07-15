@@ -16,6 +16,9 @@
 		C63BABCA22D5C4DE0066B6EA /* UIView+HBFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = C63BABC922D5C4DE0066B6EA /* UIView+HBFrame.m */; };
 		C63BABCD22D5C7100066B6EA /* UIColor+HBColor.m in Sources */ = {isa = PBXBuildFile; fileRef = C63BABCC22D5C7100066B6EA /* UIColor+HBColor.m */; };
 		C63BABD022D5D4A00066B6EA /* UIImage+HBImage.m in Sources */ = {isa = PBXBuildFile; fileRef = C63BABCF22D5D4A00066B6EA /* UIImage+HBImage.m */; };
+		C675D0A522DC541F00727FBE /* UILabel+HBLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C675D0A422DC541F00727FBE /* UILabel+HBLabel.m */; };
+		C675D0A822DC565200727FBE /* UIButton+HBButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C675D0A722DC565200727FBE /* UIButton+HBButton.m */; };
+		C675D0AB22DC5A6100727FBE /* UIView+HBView.m in Sources */ = {isa = PBXBuildFile; fileRef = C675D0AA22DC5A6100727FBE /* UIView+HBView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,12 @@
 		C63BABCE22D5D4A00066B6EA /* UIImage+HBImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+HBImage.h"; sourceTree = "<group>"; };
 		C63BABCF22D5D4A00066B6EA /* UIImage+HBImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+HBImage.m"; sourceTree = "<group>"; };
 		C63BABD122D7100F0066B6EA /* HBUIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HBUIKit.h; sourceTree = "<group>"; };
+		C675D0A322DC541F00727FBE /* UILabel+HBLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+HBLabel.h"; sourceTree = "<group>"; };
+		C675D0A422DC541F00727FBE /* UILabel+HBLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+HBLabel.m"; sourceTree = "<group>"; };
+		C675D0A622DC565200727FBE /* UIButton+HBButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+HBButton.h"; sourceTree = "<group>"; };
+		C675D0A722DC565200727FBE /* UIButton+HBButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+HBButton.m"; sourceTree = "<group>"; };
+		C675D0A922DC5A6100727FBE /* UIView+HBView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+HBView.h"; sourceTree = "<group>"; };
+		C675D0AA22DC5A6100727FBE /* UIView+HBView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+HBView.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +101,12 @@
 				C63BABCC22D5C7100066B6EA /* UIColor+HBColor.m */,
 				C63BABCE22D5D4A00066B6EA /* UIImage+HBImage.h */,
 				C63BABCF22D5D4A00066B6EA /* UIImage+HBImage.m */,
+				C675D0A922DC5A6100727FBE /* UIView+HBView.h */,
+				C675D0AA22DC5A6100727FBE /* UIView+HBView.m */,
+				C675D0A322DC541F00727FBE /* UILabel+HBLabel.h */,
+				C675D0A422DC541F00727FBE /* UILabel+HBLabel.m */,
+				C675D0A622DC565200727FBE /* UIButton+HBButton.h */,
+				C675D0A722DC565200727FBE /* UIButton+HBButton.m */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -167,6 +182,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C63BABCA22D5C4DE0066B6EA /* UIView+HBFrame.m in Sources */,
+				C675D0A822DC565200727FBE /* UIButton+HBButton.m in Sources */,
+				C675D0AB22DC5A6100727FBE /* UIView+HBView.m in Sources */,
+				C675D0A522DC541F00727FBE /* UILabel+HBLabel.m in Sources */,
 				C63BABB622D5C49F0066B6EA /* ViewController.m in Sources */,
 				C63BABC122D5C49F0066B6EA /* main.m in Sources */,
 				C63BABB322D5C49F0066B6EA /* AppDelegate.m in Sources */,

@@ -18,26 +18,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UIView *circleView = [[UIView alloc] initWithFrame:(CGRect){0,80,100,100}];
-    circleView.layer.contents = (__bridge id)[UIImage HBImageWithColor:[UIColor HBColorWithHexString:@"0x959595"] imageSize:(CGSize){100,100} cornerRadius:50].CGImage;
+    UIView *circleView = [UIView HBViewWithTag:1807];
+    circleView.frame = (CGRect){0,80,200,200};
+    circleView.layer.contents = (__bridge id)[UIImage HBImageWithColor:[UIColor HBColorWithHexString:@"0x959595"] imageSize:circleView.hb_size cornerRadius:circleView.hb_width/2].CGImage;
     circleView.hb_x = (self.view.hb_width - circleView.hb_width) / 2;
-    circleView.tag = 1807;
     [self.view addSubview:circleView];
     
-    UILabel *radiusLbl = [[UILabel alloc] initWithFrame:(CGRect){0,circleView.hb_maxY+50,0,0}];
-    radiusLbl.textColor = [UIColor blackColor];
+    UILabel *radiusLbl = [UILabel HBLabelWithText:@"圆角：0.50" textColor:[UIColor blackColor]];
     radiusLbl.tag = 1806;
-    radiusLbl.text = @"圆角：0.50";
-    [radiusLbl sizeToFit];
     radiusLbl.hb_x = (self.view.hb_width - radiusLbl.hb_width) / 2;
+    radiusLbl.hb_y = circleView.hb_maxY+50;
     [self.view addSubview:radiusLbl];
     
-    UILabel *hexColorLbl = [[UILabel alloc] initWithFrame:(CGRect){0,radiusLbl.hb_maxY+20,0,0}];
-    hexColorLbl.textColor = [UIColor blackColor];
+    UILabel *hexColorLbl = [UILabel HBLabelWithText:@"颜色：0x959595" textColor:[UIColor blackColor]];
     hexColorLbl.tag = 1808;
-    hexColorLbl.text = @"颜色：0x959595";
-    [hexColorLbl sizeToFit];
     hexColorLbl.hb_x = (self.view.hb_width - hexColorLbl.hb_width) / 2;
+    hexColorLbl.hb_y = radiusLbl.hb_maxY+20;
     [self.view addSubview:hexColorLbl];
     
     CGFloat w = self.view.hb_width - 30;
