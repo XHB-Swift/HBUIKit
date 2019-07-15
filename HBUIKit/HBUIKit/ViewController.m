@@ -19,22 +19,30 @@
     [super viewDidLoad];
     
     UIView *circleView = [[UIView alloc] initWithFrame:(CGRect){0,80,100,100}];
-    circleView.layer.contents = (__bridge id)[UIImage HBImageWithColor:[UIColor HBColorWithHexString:@"0x00F5FF"] imageSize:(CGSize){100,100} cornerRadius:50].CGImage;
+    circleView.layer.contents = (__bridge id)[UIImage HBImageWithColor:[UIColor HBColorWithHexString:@"0x959595"] imageSize:(CGSize){100,100} cornerRadius:50].CGImage;
     circleView.hb_x = (self.view.hb_width - circleView.hb_width) / 2;
     circleView.tag = 1807;
     [self.view addSubview:circleView];
     
-    UILabel *hexColorLbl = [[UILabel alloc] initWithFrame:(CGRect){0,circleView.hb_maxY+50,0,0}];
+    UILabel *radiusLbl = [[UILabel alloc] initWithFrame:(CGRect){0,circleView.hb_maxY+50,0,0}];
+    radiusLbl.textColor = [UIColor blackColor];
+    radiusLbl.tag = 1806;
+    radiusLbl.text = @"圆角：0.50";
+    [radiusLbl sizeToFit];
+    radiusLbl.hb_x = (self.view.hb_width - radiusLbl.hb_width) / 2;
+    [self.view addSubview:radiusLbl];
+    
+    UILabel *hexColorLbl = [[UILabel alloc] initWithFrame:(CGRect){0,radiusLbl.hb_maxY+20,0,0}];
     hexColorLbl.textColor = [UIColor blackColor];
     hexColorLbl.tag = 1808;
-    hexColorLbl.text = @"0x00F5FF";
+    hexColorLbl.text = @"颜色：0x959595";
     [hexColorLbl sizeToFit];
     hexColorLbl.hb_x = (self.view.hb_width - hexColorLbl.hb_width) / 2;
     [self.view addSubview:hexColorLbl];
     
     CGFloat w = self.view.hb_width - 30;
     CGFloat x = (self.view.hb_width - w) / 2;
-    NSInteger initValue = 0x00f5ff;
+    NSInteger initValue = 0x959595;
     //颜色值
     UISlider *redSlider = [[UISlider alloc] initWithFrame:(CGRect){x,hexColorLbl.hb_maxY+20,w,20}];
     redSlider.tag = 1809;
@@ -74,12 +82,10 @@
     [self.view addSubview:cornerSlider];
 }
 
-- (void)hexSliderChange:(UISlider *)sender {
-    UILabel *hexColorLbl = [self.view viewWithTag:1808];
+- (NSString *)currentColorString {
     UISlider *redSlider = [self.view viewWithTag:1809];
     UISlider *greenSlider = [self.view viewWithTag:1810];
     UISlider *blueSlider = [self.view viewWithTag:1811];
-    UISlider *cornerSlider = [self.view viewWithTag:1812];
     NSInteger redHex = (NSInteger)redSlider.value;
     NSInteger greenHex = (NSInteger)greenSlider.value;
     NSInteger blueHex = (NSInteger)blueSlider.value;
@@ -95,21 +101,32 @@
             hexContent = [@"0" stringByAppendingString:hexContent];
         }
     }
-    hexColorLbl.text = [NSString stringWithFormat:@"0x%@", hexContent];
+    return [@"0x" stringByAppendingString:hexContent];
+}
+
+- (void)hexSliderChange:(UISlider *)sender {
+    UILabel *hexColorLbl = [self.view viewWithTag:1808];
+    UISlider *cornerSlider = [self.view viewWithTag:1812];
+    NSString *hexColorString = [self currentColorString];
+    hexColorLbl.text = [NSString stringWithFormat:@"颜色：%@", [self currentColorString]];
     [hexColorLbl sizeToFit];
     hexColorLbl.hb_x = (self.view.hb_width - hexColorLbl.hb_width) / 2;
     UIView *circleView = [self.view viewWithTag:1807];
     CGFloat radius = circleView.hb_width*cornerSlider.value;
     circleView.layer.contents = nil;
-    circleView.layer.contents = (__bridge id)[UIImage HBImageWithColor:[UIColor HBColorWithHexInt:hexInt] imageSize:(CGSize)circleView.hb_size cornerRadius:radius].CGImage;
+    circleView.layer.contents = (__bridge id)[UIImage HBImageWithColor:[UIColor HBColorWithHexString:hexColorString] imageSize:(CGSize)circleView.hb_size cornerRadius:radius].CGImage;
 }
 
 - (void)cornerSliderChange:(UISlider *)sender {
-    UILabel *hexColorLbl = [self.view viewWithTag:1808];
+    UILabel *radiusLbl = [self.view viewWithTag:1806];
+    NSString *hexColorString = [self currentColorString];
     UIView *circleView = [self.view viewWithTag:1807];
     CGFloat radius = sender.value * circleView.hb_width;
+    radiusLbl.text = [NSString stringWithFormat:@"圆角：%.2f",sender.value];
+    [radiusLbl sizeToFit];
+    radiusLbl.hb_x = (self.view.hb_width - radiusLbl.hb_width) / 2;
     circleView.layer.contents = nil;
-    circleView.layer.contents = (__bridge id)[UIImage HBImageWithColor:[UIColor HBColorWithHexString:hexColorLbl.text] imageSize:(CGSize)circleView.hb_size cornerRadius:radius].CGImage;
+    circleView.layer.contents = (__bridge id)[UIImage HBImageWithColor:[UIColor HBColorWithHexString:hexColorString] imageSize:(CGSize)circleView.hb_size cornerRadius:radius].CGImage;
 }
 
 @end
