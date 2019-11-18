@@ -37,6 +37,50 @@
     return image;
 }
 
+- (UIImage *)decodedImage {
+    CGImageRef imageRef = self.CGImage;
+    UIImage *decodeImage = nil;
+    if (imageRef != NULL) {
+        size_t width = CGImageGetWidth(imageRef);
+        size_t height = CGImageGetHeight(imageRef);
+        CGColorSpaceRef colorSpace = CGImageGetColorSpace(imageRef);
+        if (colorSpace != NULL) {
+            size_t bitsPerComponent = CGImageGetBitsPerComponent(imageRef);
+            size_t bitsPerPixel = CGImageGetBitsPerPixel(imageRef);
+            size_t bytesPerRow = CGImageGetBytesPerRow(imageRef);
+            CGBitmapInfo bitmapInfo = CGImageGetBitmapInfo(imageRef);
+            CGDataProviderRef dataProvider = CGImageGetDataProvider(imageRef);
+            if (dataProvider != NULL) {
+                CFDataRef data = CGDataProviderCopyData(dataProvider);
+                if (data != NULL) {
+                    CGDataProviderRef newDataProvider = CGDataProviderCreateWithCFData(data);
+                    CFRelease(data);
+                    if (newDataProvider != NULL) {
+                        CGImageRef newImageRef = CGImageCreate(width, height, bitsPerComponent, bitsPerPixel, bytesPerRow, colorSpace, bitmapInfo, newDataProvider, NULL, false, kCGRenderingIntentDefault);
+                        CFRelease(newDataProvider);
+                        if (newImageRef != NULL) {
+                            decodeImage = [[UIImage alloc] initWithCGImage:newImageRef];
+                            CGImageRelease(newImageRef);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return decodeImage;
+}
+
+- (void)asyncDecodeImageCompletion:(void(^)(UIImage *_Nullable))completion {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        if (completion) {
+            UIImage *decodedImage = [self decodedImage];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(decodedImage);
+            });
+        }
+    });
+}
+
 - (UIImage * _Nullable)HBCropImageInRect:(CGRect)rect {
     UIImage *cropImage = nil;
     CGSize imageSize = self.size;

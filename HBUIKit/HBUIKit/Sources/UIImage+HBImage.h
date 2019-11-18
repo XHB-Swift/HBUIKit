@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIImage (HBImage)
 
+@property (nonatomic, nullable, copy, readonly) UIImage *decodedImage;
+
 + (UIImage * _Nullable)HBImageWithColor:(UIColor * _Nullable)color imageSize:(CGSize)size;
 
 + (UIImage * _Nullable)HBImageWithColor:(UIColor * _Nullable)color imageSize:(CGSize)size cornerRadius:(CGFloat)radius;
@@ -21,6 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (UIImage * _Nullable)HBCropImageInRect:(CGRect)rect;
 
 - (UIImage * _Nullable)HBResizeImageToSize:(CGSize)size;
+
+- (void)asyncDecodeImageCompletion:(void(^)(UIImage * _Nullable decodedImage))completion;
 
 @end
 
